@@ -527,18 +527,6 @@ console.log(convert(obj));
 let string = "hi";
 string.toUpperCase();
 
-//replace function can't not be used . it replaces the first letter it sees and capitalizes it
-function capital(str) {
-  str = str.replace(str[0], str[0].toUpperCase());
-  for (let i = 1; i < str.length - 1; i++) {
-    if (str[i] === " ") {
-      str = str.replace(str[i + 1], str[i + 1].toUpperCase());
-    }
-  }
-  return str;
-}
-console.log(capital("javascript is fun"));
-
 // Feb 7 2020 morning challenge
 
 /*
@@ -607,8 +595,52 @@ console.log(uniqueCharacters("bbbbkkkkkkkk37777"));
   }
  }
  * class Student extends Person{
-   constructor(){
-     super()
+   constructor(name, age, height , gpa){
+     super(name, age, height);
+     this.gpa = gpa;
    }
  }
  */
+let arr11 = [1, 2, 3, 4, 5];
+function double(arr11) {
+  return arr.map(num => num * 2);
+}
+console.log(double(arr11));
+
+// Feb 21 2020
+// whiteboarding
+
+let arr22 = [1, 3, 5, 7, 1, 8, 5, 1, 2];
+function nonRepeat(arr22) {
+  let temp = [];
+  let count = {};
+  for (let i = 0; i < arr22.length; i++) {
+    if (count.hasOwnProperty(arr22[i])) {
+      count[arr22[i]] = count[arr22[i]] + 1;
+    } else {
+      count[arr22[i]] = 1;
+    }
+  }
+  for (let i = 0; i < arr22.length; i++) {
+    if (count[arr22[i]] === 1) {
+      temp.push(arr22[i]);
+    }
+  }
+  console.log(count);
+  return temp;
+}
+
+console.log(nonRepeat(arr22));
+
+function nonRepeat2(arr22) {
+  let temp = arr22.sort();
+  for (let i = 0; i < arr22.length; i++) {
+    let lastIndex = temp.lastIndexOf(arr22[i]);
+    let firstIndex = temp.indexOf(arr22[i]);
+    if (firstIndex !== lastIndex) {
+      temp.splice(firstIndex, lastIndex - firstIndex + 1);
+    }
+  }
+  return temp;
+}
+console.log(nonRepeat2(arr22));
